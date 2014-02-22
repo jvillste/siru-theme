@@ -1,0 +1,286 @@
+#skip-link{
+    display:none;
+}
+
+/* top menu */
+.top_menu_tab_spacer
+{
+    float:left;
+    width:5px;
+    height:27px;
+    border-bottom:2px solid black;
+}
+
+.top-tab-left, .top-tab-right{
+    width:7px;
+    height:27px;
+    float:left;
+}
+
+.top-tab-left{
+    background-image: url("images/top-tab-left.png");
+}
+
+.top-tab-right{
+    background-image: url("images/top-tab-right.png");
+}
+
+.top-tab-middle{
+    height:20px;
+    float:left;
+    background-image: url("images/top-tab-middle.png");
+    padding-top:7px;
+}
+
+.top-tab-left, .top-tab-middle, .top-tab-right
+{
+    border-bottom: 2px solid black;
+    display:block;
+}
+
+.active-trail, .active-trail, .active-trail
+{
+    border-bottom: none;
+}
+
+.active-trail.top-tab-middle
+{
+    background-image: url("images/active-top-tab-middle.png");
+    margin-top:2px;
+}
+
+.active-trail.top-tab-left
+{
+    background-image: url("images/active-top-tab-left.png");
+    margin-top:2px;
+}
+
+.active-trail.top-tab-right
+{
+    background-image: url("images/active-top-tab-right.png");
+    margin-top:2px;
+}
+
+/* left menu */
+
+.left_menu_tab_spacer
+{
+    float:right;
+    clear:both;
+    width:5px;
+    height:5px;
+    border-right:2px solid black;
+}
+
+.left-tab-left, .left-tab-right{
+    float:left;
+    display:block;
+}
+
+.left-tab-left
+{
+    clear:both;
+    width:7px;
+    height:30px;
+    background-image: url("images/left-tab-left.png");
+
+}
+
+.left-tab-right
+{
+    width:130px;
+}
+
+.taxonomy_term.left-tab-right
+{
+    width:120px;
+}
+
+.left-tab-right
+{
+    background-image: url("images/left-tab-right.png");
+    background-position: right;
+    padding-top:7px;
+    height:23px;
+    padding-right:5px;
+    text-align:right;
+
+    border-right: 2px solid black;
+}
+
+
+.taxonomy_term.left-tab-left
+{
+    margin-left:10px;
+}
+.taxonomy_term.active.left-tab-left
+{
+    margin-left:12px;
+}
+
+.highlighted.left-tab-left
+{
+    background-image: url("images/highlighted-left-tab-left.png");
+}
+
+.highlighted.left-tab-right
+{
+    background-image: url("images/highlighted-left-tab-right.png");
+}
+
+.active.left-tab-left
+{
+    background-image: url("images/selected-left-tab-left.png");
+        margin-left:2px;
+}
+.active.left-tab-right
+{
+    background-image: url("images/selected-left-tab-right.png");
+    border-right: none;
+}
+
+/*common */
+.tab-header
+{
+    /*font-family: "arial black";*/
+    font-family: "arial";
+    font-weight: bold;
+    color:black;
+    font-size:14px;
+}
+
+a 
+{
+    text-decoration:none;
+}
+
+h1
+{
+    font-size:19px;
+    font-family:'arial';
+}
+
+h2
+{
+	font-size:12px;	
+}
+body{
+    font-family:'arial';
+}
+
+/*nodes*/
+.page_list_header
+{
+    font-family: "arial";
+    font-weight: bold;
+    color:black;
+    font-size:15px;
+}
+.page_list_date_div
+{
+    margin-top:15px;
+	float:left;
+}
+
+.like_div
+{
+	float:right;
+	margin-top:10px;
+}
+
+.page_list_header_div
+{
+    width:380px;
+    float:left;
+    margin-top: 5px;
+}
+.page_list_date
+{
+    font-family: "arial";
+    color:black;
+    font-size:12px;
+    margin-right:10px;
+}
+
+.teaser
+{
+    display:block;
+    color:black;
+    margin-top:5px;
+}
+/*search*/
+#search
+{
+    float:right;
+    margin-bottom:20px;
+}
+
+/* comments */
+
+.comment-date
+{
+    font-size:12px;
+    float:right;
+}
+
+.comment-author
+{
+    font-size:14px;
+    font-weight:bold;
+    float:right;
+    clear:both;
+}
+
+.comment
+{
+    margin-top:20px;
+    padding-top:10px;
+    padding-left:20px;
+    padding-right:20px;
+    padding-bottom:20px;
+    border-top: 2px solid;
+}
+.comment-links
+{
+    clear:both;
+    margin-top:20px;
+    float:left;
+}
+
+/*captcha*/
+.captcha_question
+{
+    margin-top:20px;
+}
+
+/*main*/
+#top-left-round-corner
+{
+    background-image: url("images/top-left-corner.png");
+}
+
+#top-right-round-corner
+{
+    background-image: url("images/top-right-corner.png");
+}
+
+#bottom-left-round-corner
+{
+    background-image: url("images/bottom-left-corner.png");
+}
+
+#bottom-right-round-corner
+{
+    background-image: url("images/bottom-right-corner.png");
+}
+
+.messages.status
+{
+    background-color:lightGreen;
+}
+
+.captcha
+{
+	border:none;
+}
+	

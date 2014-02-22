@@ -1,0 +1,8 @@
+name = Siru
+description = Sirun teema
+core = "6.x"
+engine = phptemplate
+
+regions[content] = Sisalto
+regions[right] = Oikea
+
