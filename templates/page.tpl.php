@@ -361,6 +361,10 @@
 	                <a style="float:right;margin-right:5px;" href="http://www.facebook.com/sirpa.kauppinen" >
 	                	<img src="<?php print base_path() . path_to_theme() . '/images/facebook.jpg' ?>" alt="" />
 	                </a>
+
+	                <a style="float:right;margin-right:5px;" href="/blog/rss-kaikki" >
+	                	<img src="/misc/feed.png" alt="" />
+	                </a>
                 </div>
                 
                 <div style="clear:both" ></div>
