@@ -265,6 +265,19 @@
             	float: right;
             	margin-bottom:20px;
             }
+
+            .orange-box
+            {
+                background: #ff9933;
+                border-radius: 5px;
+                border-width: 2px;
+                border-color: #000000;
+                border-style: solid;
+                padding: 4px;
+                color: black;
+                font-weight: bold;
+                text-align: center;
+            }
         </style>
 		<script type="text/javascript">
 
@@ -307,8 +320,8 @@
                 <div id="top-left-round-corner"></div>
                 <div id="top-edge"></div>
                 <div style="clear:both;" ></div>
-                
-                <div id="page-content">
+                 
+               <div id="page-content">
                     <?php print $debug; ?>
                     <?php print $feed_link; ?>
                     <?php if ($mission): print '<div id="mission">'. $mission .'</div>'; endif; ?>
@@ -323,7 +336,15 @@
 				        style="width:100px; height:20px;">
 				</iframe>
 			</div>
-			<div style="clear:both;"></div>
+                                                                                                                                              <div style="clear:both;"></div>
+<div style="margin-top:10px;">
+                                                                                                                                              <div style="float:left;">
+<?php print previous_node($node); ?> 
+</div>
+                                                                                                                                              <div style="float:right;">
+<?php print next_node($node); ?>
+</div>
+</div>                                                                                                                                         <div style="clear:both;"></div>
   		    <?php endif; ?>
                     <?php if ($title): print '<h1'. ($tabs ? ' class="with-tabs"' : '') .'>'. $title .'</h1>'; endif; ?>
                     <?php if ($show_messages && $messages): print $messages; endif; ?>
@@ -339,32 +360,39 @@
 
             <div id="right_region">
                 <div class="flags">
-	                <a href="/"><img src="<?php print base_path() . path_to_theme() . '/images/fi.jpg' ?>" alt="" /></a>
-	                <a href="/sv/node/729"><img src="<?php print base_path() . path_to_theme() . '/images/sv.jpg' ?>" alt="" /></a>
-                </div>
-                <div style="clear:both" ></div>
-                <?php print $search_box; ?>
-                <div style="clear:both" ></div>
-                <?php //print $feed_icons ?>
-                <?php if ($right_image): print '<img src="'. $right_image .'" />'; endif; ?>
-		<a href="https://lahjoita.vihreat.fi/lahjoita/henkilolle/sirpa-siru-kauppinen">
-		  <img style="margin-top:5px" src="/sites/all/themes/siru/images/tue-eurovaalikampanjaa.png" />
-		</a>
-                <?php print $right ?>
-                
-				<div id="linkki-ikonit">
-					<a href="http://www.vihreat.fi/sirpa.kauppinen" ><img id="vihreat" src="<?php print base_path() . path_to_theme() . '/images/vihreat.gif' ?>" alt="" /></a>
-           	      <a style="float:right" href="http://twitter.com/SiruKauppinen" >
+		<a href="http://www.vihreat.fi/sirpa.kauppinen" ><img id="vihreat" src="<?php print base_path() . path_to_theme() . '/images/vihreat.gif' ?>" alt="" /></a>
+
+           	      <a href="http://twitter.com/SiruKauppinen" >
 	                <img src="<?php print base_path() . path_to_theme() . '/images/twitter.jpg' ?>" alt="" />
 	              </a>
 
-	                <a style="float:right;margin-right:5px;" href="http://www.facebook.com/sirpa.kauppinen" >
+	                <a  href="http://www.facebook.com/sirpa.kauppinen" >
 	                	<img src="<?php print base_path() . path_to_theme() . '/images/facebook.jpg' ?>" alt="" />
 	                </a>
 
-	                <a style="float:right;margin-right:5px;" href="/blog/rss-kaikki" >
+	                <a href="/blog/rss-kaikki" >
 	                	<img src="/misc/feed.png" alt="" />
 	                </a>
+	<br/>
+
+                </div>
+                <?php print $search_box; ?>
+                <div style="clear:both" ></div>
+	                <a style="float:right" href="/"><img src="<?php print base_path() . path_to_theme() . '/images/fi.jpg' ?>" alt="" /></a>
+	                <a style="float:right;margin-right:5px" href="/sv/node/729"><img src="<?php print base_path() . path_to_theme() . '/images/sv.jpg' ?>" alt="" /></a>
+
+                <?php //print $feed_icons ?>
+                <?php if ($right_image): print '<img src="'. $right_image .'" />'; endif; ?>
+
+		<a style="margin-top:10px;float:right;" href="https://lahjoita.vihreat.fi/lahjoita/henkilolle/sirpa-siru-kauppinen-0">
+          <div style="margin-top:15px;margin-right: 20px;" class="orange-box">Tue vaalikampanjaani</div>
+		</a>
+                <div style="clear:both" ></div>
+
+                <?php print $right ?>
+                
+		<div id="linkki-ikonit">
+
                 </div>
                 
                 <div style="clear:both" ></div>

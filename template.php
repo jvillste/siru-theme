@@ -279,3 +279,41 @@ function siru_comment_form($form) {
     $output .= drupal_render($form);
     return $output;
 }
+
+
+    function next_node($node)
+    {   
+        $query = db_rewrite_sql("SELECT nid, title FROM {node} WHERE created > '%s' AND status=1 and promote=1 AND type='%s' ORDER BY created ASC LIMIT 1", "node", "nid");
+        
+        $result = db_query($query, $node->created, $node->type);
+
+       $next_node = db_fetch_object($result);
+       
+        if($next_node->nid!=NULL)
+        {
+            return l("Seuraava >>", 'node/'.$next_node->nid);
+        }
+        else
+        {
+            return NULL;
+        }
+    }
+
+    function previous_node($node)
+    {   
+
+        $query = db_rewrite_sql("SELECT nid, title FROM {node} WHERE created < '%s' AND status=1 and promote=1 AND type='%s' ORDER BY created DESC LIMIT 1", "node", "nid");
+        
+        $result = db_query($query, $node->created, $node->type);
+
+       $previous_node = db_fetch_object($result);
+       
+        if($previous_node->nid!=NULL)
+        {
+            return l("<< Edellinen", 'node/'.$previous_node->nid);
+        }
+        else
+        {
+            return NULL;
+        }
+    }
