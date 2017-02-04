@@ -2,9 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   
   <head>
-    <?php if ($_GET['mobile'] == 'true'): ?> 
-      <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0">
-    <?php endif; ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
                                                    
     <?php print $head; ?>
     <title><?php print $head_title; ?></title>
@@ -12,8 +10,6 @@
     <?php print $scripts; ?>
     <script type="text/javascript"><?php /* Needed to avoid Flash of Unstyled Content in IE */ ?> </script>
     <script type="text/javascript" src="<?php print base_path() . path_to_theme() . '/javascript/jquery-1.4.3.min.js' ?>"></script>
-    
-    
     
     
     <script type="text/javascript">
@@ -296,41 +292,21 @@
 	  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 	  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
-      
+
     </script>
   </head>
   
-  <body  class="<?php print $body_classes; ?>">
-    
-    <?php if ($_GET['mobile'] == 'true'): ?> 
+    <body  class="<?php print $body_classes; ?>">
+
+    <?php print $left_menu_json; ?>
+
+
     <div id="mobile" style="display: none">
-      <script type="text/javascript" src="<?php print base_path() . path_to_theme() . '/javascript/compiled/app.js' ?>"></script>
+
       <div id="app" >app is here</div>
-      <script>sirunsivut_mobile.core.main();</script>
     </div>
     
-    <script type="text/javascript">
-      function chooseLayout () {
-	  if((window.innerWidth || document.body.clientWidth) < 920){
-	      document.getElementById('mobile').style.display = 'block';
-	      document.getElementById('desktop').style.display = 'none';
-	  }else{
-	      document.getElementById('desktop').style.display = 'block';
-	      document.getElementById('mobile').style.display = 'none';
-	  }
-      }
-      $(window).load(function() {
-	  document.getElementById('desktop').style.display = 'none';
-	  document.getElementById('mobile').style.display = 'none';
-	  
-	  chooseLayout();
-	  document.body.onresize = chooseLayout;
-      });		
-      </script>
       <div id="desktop" style="display:none" >
-	  <?php else: ?>
-      <div id="desktop">
-	  <?php endif; ?> 
  
       <div id="page">
         <img id="lehdet" src="<?php print base_path() . path_to_theme() . '/images/lehdet_big.jpg' ?>" alt="" />
@@ -501,6 +477,9 @@
       
       <?php print $closure; ?>
     </div>
-    
+
+      <script type="text/javascript" src="<?php print base_path() . path_to_theme() . '/javascript/compiled/app.js' ?>"></script>
+      <script>sirunsivut_mobile.core.main();</script>
+
   </body>
 </html>
