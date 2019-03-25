@@ -426,7 +426,7 @@
           <?php //print $feed_icons ?>
           <?php if ($right_image): print '<img src="'. $right_image .'" />'; endif; ?>
 	  
-	  <a style="margin-top:10px;float:right;" href="https://lahjoita.vihreat.fi/lahjoita/henkilolle/sirpa-siru-kauppinen-0">
+	  <a style="margin-top:10px;float:right;" href="https://civicrm.vihreat.fi/civicrm/contribute/transact?id=556&reset=1&fbclid=IwAR1W7sDdBtavb3CT0F6G0W42PcYmdARi2Xt2n8m8vKHKdAUdSlPBxfkINHU">
             <div style="margin-top:15px;margin-right: 20px;" class="orange-box">Tue vaalikampanjaani</div>
 	  </a>
           <div style="clear:both" ></div>
