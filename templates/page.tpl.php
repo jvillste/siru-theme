@@ -27,6 +27,23 @@
         });
       </script>
 
+      <script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
+
 
       <style type="text/css">
         #page{
@@ -352,9 +369,7 @@
                   <div class="like_div">
 <iframe src="https://www.facebook.com/plugins/like.php?href=<?php print 'http://' . $_SERVER['HTTP_HOST'] . request_uri() ?>&width=90&layout=button_count&action=like&size=small&share=false&height=21&appId=1993286384041306" width="90" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
 
-                    <iframe allowtransparency="true" frameborder="0" scrolling="no"
-                            src="https://platform.twitter.com/widgets/tweet_button.html?lang=fi"
-                            style="width:100px; height:20px;">
+                    <a class="twitter-share-button" href="https://twitter.com/intent/tweet"> Tweet</a>
                     </iframe>
                   </div>
                   <div style="clear:both;"></div>
