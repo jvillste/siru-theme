@@ -12,9 +12,6 @@
       <script type="text/javascript"><?php /* Needed to avoid Flash of Unstyled Content in IE */ ?> </script>
       <script type="text/javascript" src="<?php print base_path() . path_to_theme() . '/javascript/jquery-1.4.3.min.js' ?>"></script>
 
-
-
-
       <script type="text/javascript">
         $(window).load(function() {
           var highestCol = Math.max($('#left-menu-upper-part').height(),$('#content').height(),$('#right_region').height()+20);
@@ -315,7 +312,6 @@
     </head>
 
     <body class="<?php print $body_classes; ?>">
-
       <div class="desktop" >
           <div id="page">
             <img id="lehdet" src="<?php print base_path() . path_to_theme() . '/images/lehdet_big.jpg' ?>" alt="" />
@@ -354,7 +350,7 @@
                   <?php endif; ?>
 
                   <div class="like_div">
-                    <script src="http://connect.facebook.net/fi_FI/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="false" width="100"></fb:like>
+<iframe src="https://www.facebook.com/plugins/like.php?href=<?php print 'http://' . $_SERVER['HTTP_HOST'] . request_uri() ?>&width=90&layout=button_count&action=like&size=small&share=false&height=21&appId=1993286384041306" width="90" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
 
                     <iframe allowtransparency="true" frameborder="0" scrolling="no"
                             src="https://platform.twitter.com/widgets/tweet_button.html?lang=fi"
