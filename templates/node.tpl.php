@@ -1,4 +1,7 @@
 <?php
+
+require_once(__DIR__ . "/../dependencies/html2text/html2text.php");
+
 // $Id: node.tpl.php,v 1.4.2.1 2009/08/10 10:48:33 goba Exp $
 
 /**
@@ -57,7 +60,7 @@
   <div class="page_list_header_div"> <a class="page_list_header" href="<?php print $node_url ?>" title="<?php print $title ?>"><?php print $title ?></a></div>
   <div style="clear:both;"></div>
   <?php if(strpos($content, 'div') == FALSE): ?>
-  	<a  class="teaser" href="<?php print $node_url ?>" ><?php print $content ?></a>
+      <a class="teaser" href="<?php print $node_url ?>" ><?php print convert_html_to_text($content, true) ?></a>
   <?php endif; ?>
 <?php else: ?>
     <div class="content">
@@ -65,6 +68,4 @@
      </div>
      <?php print $links; ?>
 <?php endif; ?>
-
-
 </div>
