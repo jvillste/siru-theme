@@ -4,30 +4,30 @@ function siru_preprocess_page(&$variables) {
   $theme_page_id = '1';
   $initiative_page_id = '80';
   $calendar_page_id = '79';
-  
+
   $is_blog_page = arg(0) == 'taxonomy'
      || arg(0) == 'blog'
      || (isset($variables['node']) && $variables['node']->type == 'story');
 
   if(arg(0) == 'blog' && arg(1) == 'newest')
   {
-  	  $variables['feed_link'] = '<a class="feed-link" href="/blog/rss"><img src="/misc/feed.png" /></a>';
+          $variables['feed_link'] = '<a class="feed-link" href="/blog/rss"><img src="/misc/feed.png" /></a>';
   }
-  	
+
   $is_initiative_page = (isset($variables['node']) && ( $variables['node']->type == 'aloite' || $variables['node']->nid == $initiative_page_id ));
-     
+
   $active_top_menu_tab = '';
   if($is_blog_page)
   {
      $active_top_menu_tab = 'blog/all';
-	 $variables['right_image'] = base_path() . path_to_theme() . '/images/vaalikuvat/Kauppinen_10-08-18_050_web.jpg';
+         $variables['right_image'] = base_path() . path_to_theme() . '/images/vaalikuvat/Kauppinen_10-08-18_050_web.jpg';
   } else if($is_initiative_page ) {
      $active_top_menu_tab = 'node/' . $initiative_page_id;
-	 $variables['right_image'] = base_path() . path_to_theme() . '/images/vaalikuvat/Kauppinen_10-08-18_068_web.jpg';
+         $variables['right_image'] = base_path() . path_to_theme() . '/images/vaalikuvat/Kauppinen_10-08-18_068_web.jpg';
   } else if( (isset($variables['node']) && $variables['node']->type == 'teema' )) {
-	 $variables['right_image'] = base_path() . path_to_theme() . '/images/vaalikuvat/Kauppinen_10-08-18_072_web.jpg';
+         $variables['right_image'] = base_path() . path_to_theme() . '/images/vaalikuvat/Kauppinen_10-08-18_072_web.jpg';
   } else if($is_initiative_page || (isset($variables['node']) && $variables['node']->type == 'teema' )) {
-	 $variables['right_image'] = base_path() . path_to_theme() . '/images/vaalikuvat/Kauppinen_10-08-18_072_web.jpg';
+         $variables['right_image'] = base_path() . path_to_theme() . '/images/vaalikuvat/Kauppinen_10-08-18_072_web.jpg';
   }else if(isset($variables['node']) && isset($variables['node']->field_image_on_right) && $variables['node']->field_image_on_right[0][view] == '') {
     $variables['right_image']  = null;
   } else if(isset($variables['node']) && isset($variables['node']->field_image_on_right)) {
@@ -35,17 +35,17 @@ function siru_preprocess_page(&$variables) {
   }else {
      $variables['right_image'] = base_path() . path_to_theme() . '/images/siru_ja_pallo.png';
   }
- 
-  
+
+
   //$variables['debug'] = "active top menu tab " . $active_top_menu_tab . " " .  $variables['node']->type;
   //$variables['debug'] =  $variables['right_image'];
-	 
-	 
+
+
   $variables['top_menu'] = top_menu($variables['primary_links'],$active_top_menu_tab);
   $variables['left_menu'] = left_menu($variables['secondary_links']);
 
-
-
+  $variables['mobile_top_menu'] = mobile_top_menu($variables['primary_links'],$active_top_menu_tab);
+  $variables['mobile_left_menu'] = mobile_left_menu($variables['secondary_links']);
 
   // Disable title
   if((isset($variables['node']) && ($variables['node']->type == 'page'))
@@ -70,7 +70,7 @@ function siru_preprocess_page(&$variables) {
                 $node_terms[$term_id] = '';
             }
         }
-        
+
         foreach(taxonomy_get_tree(2) as $term)
         {
             $class = 'taxonomy_term';
@@ -87,6 +87,7 @@ function siru_preprocess_page(&$variables) {
         }
 
         $variables['left_menu'] = left_menu($links);
+        $variables['mobile_left_menu'] = mobile_left_menu($links);
 
     }
 
@@ -100,9 +101,9 @@ function siru_preprocess_page(&$variables) {
         $variables['right_image'] = NULL;
         $variables['title'] = NULL;
     }
-	
+
   }
-  
+
 }
 
 
@@ -171,7 +172,7 @@ function top_menu($links, $active_tab) {
       if ($i == 1) {
         $class[] = 'first';
       }
-      
+
       if ($i == $num_links) {
         $class[] = 'last';
       }
@@ -186,13 +187,39 @@ function top_menu($links, $active_tab) {
       $output .= '<a href="' . url($link['href']) . '" class="top-tab-middle ' . $class_attributes . '" ><span  class="tab-header left-tab-title">' . $link['title'] . '</span></a>';
       $output .= '<a href="' . url($link['href']) . '" class="top-tab-right ' . $class_attributes . '"></a>';
       $output .= "\n";
-      
-      $i++; 
+
+      $i++;
     }
   }
 
   return $output;
 }
+
+function mobile_top_menu($links, $active_tab) {
+
+     $output = '';
+
+  if (count($links) > 0) {
+
+    $num_links = count($links);
+    $i = 1;
+
+    foreach ($links as $key => $link) {
+      $class = array($key);
+
+      if (isset($link['href']) && $link['href'] == $active_tab){
+        $class[] = 'active-trail';
+      }
+
+      $output .= '<a href="' . url($link['href']) . '" class="mobile-top-tab ' . implode(' ', $class) . '" ><span  class="tab-header left-tab-title">' . $link['title'] . '</span></a>';
+
+      $i++;
+    }
+  }
+
+  return $output;
+}
+
 
 function left_menu($links) {
      $output = '';
@@ -204,8 +231,8 @@ function left_menu($links) {
 
     foreach ($links as $key => $link) {
       $class = array($key);
-        $class[] = $link['class'];
-      
+      $class[] = $link['class'];
+
 
       // Add first, last and active classes to the list of links to help out themers.
       if ($i == 1) {
@@ -219,13 +246,40 @@ function left_menu($links) {
       }
 
       $class_attributes = implode(' ', $class);
-      
+
       $output .= '<div style="clear:both;" ></div>';
       $output .= '<div class="left_menu_tab_spacer"></div>';
       $output .= '<div style="clear:both;" ></div>';
-     
+
       $output .= '<a href="' . url($link['href']) . '" class="left-tab-left ' . $class_attributes . '"></a>';
       $output .= '<a href="' . url($link['href']) . '" class="left-tab-right ' . $class_attributes . '" style="overflow:hidden;"><span class="tab-header top-tab-title">' . $link['title'] . '</span></a>';
+      $output .= "\n";
+
+      $i++;
+    }
+  }
+
+  return $output;
+
+}
+
+function mobile_left_menu($links) {
+     $output = '';
+
+  if (count($links) > 0) {
+
+    $num_links = count($links);
+    $i = 1;
+
+    foreach ($links as $key => $link) {
+      $class = array($key);
+      $class[] = $link['class'];
+
+      if (isset($link['href']) && ($link['href'] == $_GET['q'] || ($link['href'] == '<front>' && drupal_is_front_page()))){
+        $class[] = 'active';
+      }
+
+      $output .= '<a href="' . url($link['href']) . '" class="mobile-left-tab ' . implode(' ', $class) . '" style="overflow:hidden;"><span class="tab-header top-tab-title">' . $link['title'] . '</span></a>';
       $output .= "\n";
 
       $i++;
@@ -282,13 +336,13 @@ function siru_comment_form($form) {
 
 
     function next_node($node)
-    {   
+    {
         $query = db_rewrite_sql("SELECT nid, title FROM {node} WHERE created > '%s' AND status=1 and promote=1 AND type='%s' ORDER BY created ASC LIMIT 1", "node", "nid");
-        
+
         $result = db_query($query, $node->created, $node->type);
 
        $next_node = db_fetch_object($result);
-       
+
         if($next_node->nid!=NULL)
         {
             return l("Seuraava >>", 'node/'.$next_node->nid);
@@ -300,14 +354,14 @@ function siru_comment_form($form) {
     }
 
     function previous_node($node)
-    {   
+    {
 
         $query = db_rewrite_sql("SELECT nid, title FROM {node} WHERE created < '%s' AND status=1 and promote=1 AND type='%s' ORDER BY created DESC LIMIT 1", "node", "nid");
-        
+
         $result = db_query($query, $node->created, $node->type);
 
        $previous_node = db_fetch_object($result);
-       
+
         if($previous_node->nid!=NULL)
         {
             return l("<< Edellinen", 'node/'.$previous_node->nid);
